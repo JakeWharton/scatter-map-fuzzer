@@ -1,0 +1,30 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21'
+	}
+}
+
+repositories {
+	mavenCentral()
+	google()
+}
+
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+dependencies {
+	implementation 'androidx.collection:collection:1.4.5'
+}
+
+tasks.withType(JavaCompile).configureEach { task ->
+	task.sourceCompatibility = '1.8'
+	task.targetCompatibility = '1.8'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile).configureEach { task ->
+	task.kotlinOptions {
+		jvmTarget = '1.8'
+	}
+}
